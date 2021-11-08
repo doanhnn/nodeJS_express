@@ -1,38 +1,18 @@
-const { readFile, writeFile } = require("fs").promises
-const { result } = require("lodash")
-const util = require("util")
-//const readFilePromise = util.promisify(readFile)
-// const writeFilePromise = util.promisify(writeFile)
+const http = require('http')
 
-const start = async() => {
-    try {
-        const first = await readFile("./content/first.txt","utf8")
-        await writeFile("./content/result-mind-grenade.txt",first,"utf8")
-        console.log(first)        
-    } catch (error) {
-        console.log(error)
-    }
-}
+// const server = http.createServer((req, res) =>{
+//     console.log(req)
+//     res.end("Hello")
+// })
 
-start()
+// using event emitter API
+const server = http.createServer()
+// emits request  event
+// subscribe to it / listen for it /response to it
+server.on('request', (req, res) => {
+    //res.write(req)
+    console.log(req)
+    res.end("Hello")
+})
 
-// readFile("./content/first.txt","utf8")
-// .then((result) => console.log(result))
-// .catch((err) => console.log(err))
-
-// const getText = (path) => {
-//     return new Promise((resolver,reject) => {
-//         readFile(path,"utf8",(err,data) => {
-//             if(err){
-//                 reject(err)
-//             }
-//             else{
-//                 resolver(data)
-//             }
-//         })
-//     })
-// }
-
-// getText("./content/first.txt")
-// .then((result) => console.log(result))
-// .catch((err) => console.log(err))
+server.listen(5000)
