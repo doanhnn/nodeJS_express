@@ -1,3 +1,5 @@
-/node_modules
-/content
-package-lock.json
+express_tutorial/node_modules
+express_tutorial/package-lock.json
+node_tutorial/node_modules
+node_tutorial/content
+node_tutorial/package-lock.json
